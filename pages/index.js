@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Dashboard from "../pages/Dashboard";
 
 export default function Home() {
   return (
@@ -6,7 +7,7 @@ export default function Home() {
       <Head>
         <title>Portfolio</title>
       </Head>
-      Hello
+      <Dashboard />
       <style jsx global>{`
         html,
         body {
