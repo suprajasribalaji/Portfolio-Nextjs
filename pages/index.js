@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Dashboard from "../pages/Dashboard";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Home() {
   return (

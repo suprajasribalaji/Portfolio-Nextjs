@@ -2,6 +2,7 @@ import { NextPage } from "next";
 import styled from "styled-components";
 import { ButtonColor, LinearGradientColor, TextColor } from "../styles/theme";
 import BackgroundImage from "../public/images/home-bg-img.jpeg";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Dashboard: NextPage = () => {
     return (
@@ -17,10 +18,10 @@ const Dashboard: NextPage = () => {
                 </TitleAndSubtitle>
                 <ActionButtons>
                     <KnowMoreButton>
-                        {/* <StyledButton type="link" shape="round" size="large" ><TextInButton>KNOW MORE</TextInButton></StyledButton> */}
+                    <StyledButton type="button" className="btn btn-outline-primary btn-lg"><TextInButton>KNOW MORE</TextInButton></StyledButton>
                     </KnowMoreButton>
                     <ReachOutButton>
-                        {/* <StyledButton type="link" shape="round" size="large" ><TextInButton>REACH OUT</TextInButton></StyledButton> */}
+                        <StyledButton type="button" className="btn btn-outline-primary btn-lg"><TextInButton>REACH OUT</TextInButton></StyledButton>
                     </ReachOutButton>
                 </ActionButtons>
             </Content>
@@ -54,31 +55,43 @@ const TitleAndSubtitle = styled.div`
 
 const Title = styled.div`
   font-weight: 600; 
-  font-size: 400%;
-  margin-top: 60%;
+  font-size: 440%;
+  margin-top: 56%;
 `;
 
 const SubTitle = styled.div`
   font-weight: 250;
   color: ${TextColor.tertiaryWhite};
   font-size: 180%;
-  margin-top: 4%;
+  margin-top: 2%;
+`;
+
+const StyledButton = styled.button`
+  background-color: ${ButtonColor.backgroundColor};
+  border: none;
+  color: ${TextColor.primaryWhite};
+  &&&:hover {
+    background-color: ${ButtonColor.backgroundColor}; 
+    color: ${TextColor.lightWhite};
+  }
+  border-radius: 1.4em;
+  width: 170%;
 `;
 
 const ActionButtons = styled.div`
-  margin-top: 2.4%;
+  margin-top: 1.5%;
   display: flex;
-  margin-right: 3%;
+  width: 30%;
 `;
 
 const KnowMoreButton = styled.div`
-  margin-right: 5%;
+  margin-right: 20%;
 `;
 
 const ReachOutButton = styled.div`
-  margin-left: 5%;
+  margin-left: 10%;
 `;
 
 const TextInButton = styled.span`
-  font-size: 80%;
-`;
+  font-size: 70%;
+`
