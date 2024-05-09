@@ -38,8 +38,6 @@ const DashboardPage = styled.div`
   background-size: cover;
 `;
 
-
-
 const Content = styled.div`
   display: flex;
   flex-direction: column;
@@ -57,7 +55,7 @@ const TitleAndSubtitle = styled.div`
 const Title = styled.div`
   font-weight: 600; 
   font-size: 400%;
-  margin-top: 56%;
+  margin-top: 60%;
 `;
 
 const SubTitle = styled.div`
