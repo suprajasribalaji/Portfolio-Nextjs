@@ -1,5 +1,4 @@
 import { NextPage } from "next";
-import { Button } from "antd";
 import styled from "styled-components";
 import { ButtonColor, LinearGradientColor, TextColor } from "../styles/theme";
 import BackgroundImage from "../public/images/home-bg-img.jpeg";
