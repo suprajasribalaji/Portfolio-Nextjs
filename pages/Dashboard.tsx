@@ -18,10 +18,10 @@ const Dashboard: NextPage = () => {
                 </TitleAndSubtitle>
                 <ActionButtons>
                     <KnowMoreButton>
-                        <StyledButton type="link" shape="round" size="large" ><TextInButton>KNOW MORE</TextInButton></StyledButton>
+                        {/* <StyledButton type="link" shape="round" size="large" ><TextInButton>KNOW MORE</TextInButton></StyledButton> */}
                     </KnowMoreButton>
                     <ReachOutButton>
-                        <StyledButton type="link" shape="round" size="large" ><TextInButton>REACH OUT</TextInButton></StyledButton>
+                        {/* <StyledButton type="link" shape="round" size="large" ><TextInButton>REACH OUT</TextInButton></StyledButton> */}
                     </ReachOutButton>
                 </ActionButtons>
             </Content>
@@ -72,16 +72,6 @@ const ActionButtons = styled.div`
   margin-top: 2.4%;
   display: flex;
   margin-right: 3%;
-`;
-
-const StyledButton = styled(Button)`
-  background-color: ${ButtonColor.backgroundColor};
-  border: none;
-  color: ${TextColor.primaryWhite};
-  &&&:hover {
-    background-color: ${ButtonColor.backgroundColor}; 
-    color: ${TextColor.lightWhite};
-  }
 `;
 
 const KnowMoreButton = styled.div`
