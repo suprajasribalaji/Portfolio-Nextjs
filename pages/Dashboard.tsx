@@ -55,12 +55,13 @@ const TitleAndSubtitle = styled.div`
 
 const Title = styled.div`
   font-weight: 600; 
-  font-size: 440%;
-  margin-top: 56%;
+  font-size: 400%;
+  margin-top: 51.5%;
+  letter-spacing: 0.03em;
 `;
 
 const SubTitle = styled.div`
-  font-weight: 250;
+  font-weight: 500;
   color: ${TextColor.tertiaryWhite};
   font-size: 180%;
   margin-top: 2%;
