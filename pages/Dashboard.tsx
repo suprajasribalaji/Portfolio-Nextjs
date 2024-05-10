@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import About from "./About";
 import ExperienceAndEducation from "./ExperienceAndEducation";
 import SkillsAndProficiency from "./SkillsAndProficiency";
+import SampleWork from "./SampleWork";
 
 const Dashboard: NextPage = () => {
     return (
@@ -33,6 +34,7 @@ const Dashboard: NextPage = () => {
             <About />
             <ExperienceAndEducation />
             <SkillsAndProficiency />
+            <SampleWork />
         </Home>
     )
 };
