@@ -5,6 +5,7 @@ import BackgroundImage from "../public/images/home-bg-img.jpeg";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import About from "./About";
 import ExperienceAndEducation from "./ExperienceAndEducation";
+import SkillsAndProficiency from "./SkillsAndProficiency";
 
 const Dashboard: NextPage = () => {
     return (
@@ -31,6 +32,7 @@ const Dashboard: NextPage = () => {
             </DashboardPage>
             <About />
             <ExperienceAndEducation />
+            <SkillsAndProficiency />
         </Home>
     )
 };
