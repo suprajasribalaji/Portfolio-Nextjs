@@ -20,4 +20,6 @@ export const BackgroundColor = {
     aboutBg: '#f6f6f6',
     sampleWorkBg: '#343434',
     reachOutBg: '#000000',
+    strokeColor: '#b4b0ab',
+    trailColor: '#FFFFFF',
 }
