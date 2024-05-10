@@ -9,6 +9,17 @@ type Props = {
 }
 
 const SkillsAndProficiency : NextPage<Props> = ({ handleProjectClick, resumeURL }) => {
+    
+    const handleDownloadButton = () => {
+        console.log(resumeURL, ' ------------');
+        const link = document.createElement('a');
+        link.href = resumeURL;
+        link.target = '_blank';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     return (
         <SkillsAndProficiencyPage>
         <SkillsAndProficiencyContent>
@@ -97,10 +108,10 @@ const SkillsAndProficiency : NextPage<Props> = ({ handleProjectClick, resumeURL 
                     </AboutSkillsAndProficiency>
                     <ActionButton>
                         <DownloadResumeButton>
-                            <StyledButton type="button" className="btn btn-outline-primary">Download</StyledButton>
+                            <StyledButton type="button" className="btn btn-outline-primary" onClick={handleDownloadButton}>Download</StyledButton>
                         </DownloadResumeButton>
                         <SampleWorkButton>
-                            <StyledButton type="button" className="btn btn-outline-primary">Sample Work</StyledButton>
+                            <StyledButton type="button" className="btn btn-outline-primary" onClick={handleProjectClick}>Sample Work</StyledButton>
                         </SampleWorkButton>
                     </ActionButton>
                 </SkillsAndProficiencyContent>

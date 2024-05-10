@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { ButtonColor, LinearGradientColor, TextColor } from "../styles/theme";
 import BackgroundImage from "../public/images/home-bg-img.jpeg";
@@ -9,6 +9,8 @@ import ExperienceAndEducation from "./ExperienceAndEducation";
 import SkillsAndProficiency from "./SkillsAndProficiency";
 import SampleWork from "./SampleWork";
 import ReachOut from "./ReachOut";
+import { getDownloadURL, ref } from 'firebase/storage';
+import storage from "../config/firebase.config";
 
 const Dashboard: NextPage = () => {
   const aboutPageRef = useRef<HTMLDivElement>(null);
@@ -17,6 +19,14 @@ const Dashboard: NextPage = () => {
   const skillsAndProficiencyPageRef = useRef<HTMLDivElement>(null);
   const sampleWorkPageRef = useRef<HTMLDivElement>(null);
   const [resumeURL, setResumeURL] = useState<string>('');
+
+  useEffect(() => {
+    getDownloadURL(ref(storage, 'suprajasrirb_resume.pdf'))
+    .then((url) => {
+        setResumeURL(url);
+        console.log('storage url::::  ', url);
+    })
+  }, []);
 
   const handleKnowMoreClick = () => {
     aboutPageRef.current?.scrollIntoView({ behavior: "smooth" });
