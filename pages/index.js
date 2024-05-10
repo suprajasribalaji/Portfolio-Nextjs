@@ -1,12 +1,15 @@
 import Head from 'next/head';
+import Dashboard from "../pages/Dashboard";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Portfolio</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-
+      <Dashboard />
       <style jsx global>{`
         html,
         body {
