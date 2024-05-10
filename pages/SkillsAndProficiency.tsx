@@ -3,7 +3,12 @@ import styled from "styled-components";
 import { BackgroundColor, ButtonColor, LinearGradientColor, TextColor } from "../styles/theme";
 import BackgroundImage from "../public/images/skillprof-bg-img.jpeg";
 
-const SkillsAndProficiency : NextPage = () => {
+type Props = {
+    handleProjectClick: () => void;
+    resumeURL: string;
+}
+
+const SkillsAndProficiency : NextPage<Props> = ({ handleProjectClick, resumeURL }) => {
     return (
         <SkillsAndProficiencyPage>
         <SkillsAndProficiencyContent>

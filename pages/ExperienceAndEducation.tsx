@@ -3,7 +3,12 @@ import styled from "styled-components";
 import { ButtonColor, LinearGradientColor, TextColor } from "../styles/theme";
 import BackgroundImage from "../public/images/expedu-bg-img.jpeg";
 
-const ExperienceAndEducation: NextPage = () => {
+type Props = {
+    handleResumeContinuationClick: () => void;
+    resumeURL: string;
+}
+
+const ExperienceAndEducation: NextPage<Props> = ({ handleResumeContinuationClick, resumeURL }) => {
     return (
         <ExperienceAndEducationPage>
             <ExperienceAndEducationContent>

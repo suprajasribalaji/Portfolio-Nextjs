@@ -4,7 +4,13 @@ import { BackgroundColor, ButtonColor, TextColor } from "../styles/theme";
 import ProfilePicture from "../public/images/myImage.jpg";
 import { useState } from "react";
 
-const About: NextPage = () => {
+type Props = {
+    handleResumeClick: () => void;
+    handleProjectClick: () => void;
+    resumeURL: string;
+}
+
+const About: NextPage<Props> = ({handleResumeClick, handleProjectClick, resumeURL}) => {
     const [isResumeClicked, setIsResumeClicked] = useState<boolean>(false);
     
     return (

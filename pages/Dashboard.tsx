@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import { ButtonColor, LinearGradientColor, TextColor } from "../styles/theme";
 import BackgroundImage from "../public/images/home-bg-img.jpeg";
@@ -8,9 +9,6 @@ import ExperienceAndEducation from "./ExperienceAndEducation";
 import SkillsAndProficiency from "./SkillsAndProficiency";
 import SampleWork from "./SampleWork";
 import ReachOut from "./ReachOut";
-import { useEffect, useRef, useState } from "react";
-import { getDownloadURL, ref } from 'firebase/storage';
-import storage from "../config/firebase.config";
 
 const Dashboard: NextPage = () => {
   const aboutPageRef = useRef<HTMLDivElement>(null);
@@ -20,13 +18,25 @@ const Dashboard: NextPage = () => {
   const sampleWorkPageRef = useRef<HTMLDivElement>(null);
   const [resumeURL, setResumeURL] = useState<string>('');
 
-  useEffect(() => {
-    getDownloadURL(ref(storage, 'suprajasrirb_resume.pdf'))
-    .then((url) => {
-        setResumeURL(url);
-        console.log('storage url::::  ', url);
-    })
-  }, []);
+  const handleKnowMoreClick = () => {
+    aboutPageRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleReachOutClick = () => {
+    reachOutPageRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleResumeClick = () => {
+    experienceAndEducationPageRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleResumeContinuationClick = () => {
+    skillsAndProficiencyPageRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleProjectClick = () => {
+    sampleWorkPageRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <Home>
@@ -42,19 +52,39 @@ const Dashboard: NextPage = () => {
           </TitleAndSubtitle>
           <ActionButtons>
             <KnowMoreButton>
-              <StyledButton type="button" className="btn btn-outline-primary btn-lg"><TextInButton>KNOW MORE</TextInButton></StyledButton>
+              <StyledButton type="button" className="btn btn-outline-primary btn-lg" onClick={handleKnowMoreClick}><TextInButton>KNOW MORE</TextInButton></StyledButton>
             </KnowMoreButton>
             <ReachOutButton>
-              <StyledButton type="button" className="btn btn-outline-primary btn-lg"><TextInButton>REACH OUT</TextInButton></StyledButton>
+              <StyledButton type="button" className="btn btn-outline-primary btn-lg" onClick={handleReachOutClick}><TextInButton>REACH OUT</TextInButton></StyledButton>
             </ReachOutButton>
           </ActionButtons>
         </Content>
       </DashboardPage>
-      <About />
-      <ExperienceAndEducation />
-      <SkillsAndProficiency />
-      <SampleWork />
-      <ReachOut />
+      <AboutPage ref={aboutPageRef}>
+        <About 
+          handleResumeClick={handleResumeClick}
+          handleProjectClick={handleProjectClick}
+          resumeURL={resumeURL}
+        />
+      </AboutPage>
+      <ExperienceAndEducationPage ref={experienceAndEducationPageRef}>
+        <ExperienceAndEducation
+          handleResumeContinuationClick={handleResumeContinuationClick}
+          resumeURL={resumeURL}
+        />
+      </ExperienceAndEducationPage>
+      <SkillsAndProficiencyPage ref={skillsAndProficiencyPageRef}>
+        <SkillsAndProficiency
+          handleProjectClick={handleProjectClick}
+          resumeURL={resumeURL}
+        />
+      </SkillsAndProficiencyPage>
+      <SampleWorkPage ref={sampleWorkPageRef}>
+        <SampleWork />
+      </SampleWorkPage>
+      <ReachOutPage ref={reachOutPageRef}> 
+        <ReachOut />
+      </ReachOutPage>
     </Home>
   )
 };
@@ -129,3 +159,13 @@ const ReachOutButton = styled.div`
 const TextInButton = styled.span`
   font-size: 70%;
 `
+
+const AboutPage = styled.div``;
+
+const ReachOutPage = styled.div``;
+
+const ExperienceAndEducationPage = styled.div``;
+
+const SkillsAndProficiencyPage = styled.div``;
+
+const SampleWorkPage = styled.div``;
