@@ -4,6 +4,7 @@ import { ButtonColor, LinearGradientColor, TextColor } from "../styles/theme";
 import BackgroundImage from "../public/images/home-bg-img.jpeg";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import About from "./About";
+import ExperienceAndEducation from "./ExperienceAndEducation";
 
 const Dashboard: NextPage = () => {
     return (
@@ -29,6 +30,7 @@ const Dashboard: NextPage = () => {
                 </Content>
             </DashboardPage>
             <About />
+            <ExperienceAndEducation />
         </Home>
     )
 };
