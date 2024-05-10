@@ -8,37 +8,55 @@ import ExperienceAndEducation from "./ExperienceAndEducation";
 import SkillsAndProficiency from "./SkillsAndProficiency";
 import SampleWork from "./SampleWork";
 import ReachOut from "./ReachOut";
+import { useEffect, useRef, useState } from "react";
+import { getDownloadURL, ref } from 'firebase/storage';
+import storage from "../config/firebase.config";
 
 const Dashboard: NextPage = () => {
-    return (
-        <Home>
-            <DashboardPage>
-                <Content>
-                    <TitleAndSubtitle>
-                        <Title>
-                        SUPRAJA SRI R B
-                        </Title>
-                        <SubTitle>
-                        Enthusiastic Developer
-                        </SubTitle>
-                    </TitleAndSubtitle>
-                    <ActionButtons>
-                        <KnowMoreButton>
-                        <StyledButton type="button" className="btn btn-outline-primary btn-lg"><TextInButton>KNOW MORE</TextInButton></StyledButton>
-                        </KnowMoreButton>
-                        <ReachOutButton>
-                            <StyledButton type="button" className="btn btn-outline-primary btn-lg"><TextInButton>REACH OUT</TextInButton></StyledButton>
-                        </ReachOutButton>
-                    </ActionButtons>
-                </Content>
-            </DashboardPage>
-            <About />
-            <ExperienceAndEducation />
-            <SkillsAndProficiency />
-            <SampleWork />
-            <ReachOut />
-        </Home>
-    )
+  const aboutPageRef = useRef<HTMLDivElement>(null);
+  const reachOutPageRef = useRef<HTMLDivElement>(null);
+  const experienceAndEducationPageRef = useRef<HTMLDivElement>(null);
+  const skillsAndProficiencyPageRef = useRef<HTMLDivElement>(null);
+  const sampleWorkPageRef = useRef<HTMLDivElement>(null);
+  const [resumeURL, setResumeURL] = useState<string>('');
+
+  useEffect(() => {
+    getDownloadURL(ref(storage, 'suprajasrirb_resume.pdf'))
+    .then((url) => {
+        setResumeURL(url);
+        console.log('storage url::::  ', url);
+    })
+  }, []);
+
+  return (
+    <Home>
+      <DashboardPage>
+        <Content>
+          <TitleAndSubtitle>
+            <Title>
+              SUPRAJA SRI R B
+            </Title>
+            <SubTitle>
+              Enthusiastic Developer
+            </SubTitle>
+          </TitleAndSubtitle>
+          <ActionButtons>
+            <KnowMoreButton>
+              <StyledButton type="button" className="btn btn-outline-primary btn-lg"><TextInButton>KNOW MORE</TextInButton></StyledButton>
+            </KnowMoreButton>
+            <ReachOutButton>
+              <StyledButton type="button" className="btn btn-outline-primary btn-lg"><TextInButton>REACH OUT</TextInButton></StyledButton>
+            </ReachOutButton>
+          </ActionButtons>
+        </Content>
+      </DashboardPage>
+      <About />
+      <ExperienceAndEducation />
+      <SkillsAndProficiency />
+      <SampleWork />
+      <ReachOut />
+    </Home>
+  )
 };
 
 export default Dashboard;
