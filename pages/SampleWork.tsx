@@ -15,7 +15,7 @@ const dnsManagerDemoLink = "https://dns-manager-8da5e.web.app/";
 const dnsManagerSourceCodeLink = "https://github.com/suprajasribalaji/DNSManager";
 
 const portfolioImageSrc = "/images/portfolio.jpeg";
-const portfolioDemoLink = "https://supraja-sri.web.app/";
+const portfolioDemoLink = "https://suprajasri-portfolio.netlify.app/";
 const portfolioSourceCodeLink = "https://github.com/suprajasribalaji/Portfolio-Nextjs";
 
 const projectDetails = [
