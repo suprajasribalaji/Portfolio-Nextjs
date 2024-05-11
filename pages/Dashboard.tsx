@@ -7,6 +7,7 @@ import About from "./About";
 import ExperienceAndEducation from "./ExperienceAndEducation";
 import SkillsAndProficiency from "./SkillsAndProficiency";
 import SampleWork from "./SampleWork";
+import ReachOut from "./ReachOut";
 
 const Dashboard: NextPage = () => {
     return (
@@ -35,6 +36,7 @@ const Dashboard: NextPage = () => {
             <ExperienceAndEducation />
             <SkillsAndProficiency />
             <SampleWork />
+            <ReachOut />
         </Home>
     )
 };
