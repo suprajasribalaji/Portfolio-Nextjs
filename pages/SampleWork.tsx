@@ -228,7 +228,7 @@ const Title = styled.div`
 
 const Content = styled.div`
   font-family: "Fira Sans", sans-serif;
-  margin-top: 5%;
+  margin-top: 8%;
   justify-content: center;
 `;
 
