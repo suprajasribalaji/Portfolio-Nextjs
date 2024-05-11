@@ -1,18 +1,19 @@
 import { NextPage } from "next";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-bootstrap-carousel/dist/react-bootstrap-carousel.css';
+import { Row, Col, Card, Button } from "react-bootstrap";
 import styled from "styled-components";
 import { BackgroundColor, TextColor } from "../styles/theme";
-import Image from 'next/image';
+import Carousel from 'react-bootstrap/Carousel';
 
 const taskNoteImageSrc = "/images/expedu-bg-img.jpeg";
 const taskNoteDemoLink = "https://task-note-ab071.web.app/";
 const taskNoteSourceCodeLink = "https://github.com/suprajasribalaji/task_note";
-
 const dnsManagerImageSrc = "/images/dns-manager.jpg";
 const dnsManagerDemoLink = "https://dns-manager-8da5e.web.app/";
 const dnsManagerSourceCodeLink = "https://github.com/suprajasribalaji/DNSManager";
-
 const portfolioImageSrc = "/images/portfolio.jpeg";
-const portfolioDemoLink = "";
+const portfolioDemoLink = "https://supraja-sri.web.app/";
 const portfolioSourceCodeLink = "https://github.com/suprajasribalaji/portfolio";
 
 const projectDetails = [
@@ -26,16 +27,14 @@ const projectDetails = [
   },
   {
     title: "DNS Manager",
-    description:
-      "Designed a user-friendly UI with ReactJS, TypeScript, and Ant Design for effortless DNS record management, integrating AWS Route53, supporting CRUD operations.",
+    description: "Designed a user-friendly UI with ReactJS, TypeScript, and Ant Design for effortless DNS record management, integrating AWS Route53, supporting CRUD operations.",
     demoLink: `${dnsManagerDemoLink}`,
     sourceCodeLink: `${dnsManagerSourceCodeLink}`,
     imageSrc: `${dnsManagerImageSrc}`,
   },
   {
     title: "Portfolio",
-    description:
-      "Driven by Next.js, TypeScript, and MongoDB, our portfolio exemplifies sophistication in design and functionality. It delivers a refined and elegant user interface.",
+    description: "Driven by Next.js, TypeScript, and Firebase, our portfolio exemplifies sophistication in design and functionality. It delivers a refined and elegant user interface.",
     demoLink: `${portfolioDemoLink}`,
     sourceCodeLink: `${portfolioSourceCodeLink}`,
     imageSrc: `${portfolioImageSrc}`,
@@ -43,68 +42,224 @@ const projectDetails = [
 ];
 
 const SampleWork: NextPage = () => {
-    return (
-        <SampleWorkPage>
-            <SampleWorkContent>
-                <Title>
-                    Sample Work
-                </Title>
-                <Content>
-                    {/* <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
-                        <div className="carousel-inner">
-                            {projectDetails.map((project, index) => (
-                                <div key={index} className={index === 0 ? 'carousel-item active' : 'carousel-item'}>
-                                    <div className="card" style={{ width: '18rem' }}>
-                                        <img className="card-img-top" src={project.imageSrc} alt={project.title} />
-                                        <div className="card-body">
-                                            <h5 className="card-title">{project.title}</h5>
-                                            <p className="card-text">{project.description}</p>
-                                            <a href={project.demoLink} className="btn btn-primary" target="_blank" rel="noopener noreferrer">Demo</a>
-                                            <a href={project.sourceCodeLink} className="btn btn-secondary" target="_blank" rel="noopener noreferrer">Source Code</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                        <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span className="sr-only"></span>
-                        </a>
-                        <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span className="sr-only"></span>
-                        </a>
-                    </div> */}
-                </Content>
-            </SampleWorkContent>
-        </SampleWorkPage>
-    )
+  const chunkArray = (array, size) => {
+    const chunks = [];
+    for (let i = 0; i < array.length; i += size) {
+      chunks.push(array.slice(i, i + size));
+    }
+    return chunks;
+  };
+
+  const chunkedProjectDetails = chunkArray(projectDetails, 3);
+  const displayCarousel = projectDetails.length > 3;
+
+
+  return (
+    <SampleWorkPage>
+      <SampleWorkContent>
+        <Title>Sample Work</Title>
+        <Content>
+  <CenteredContent>
+    {displayCarousel && (
+      <StyledCarouselContainer>
+        <StyledCarousel indicators={false} controls={true} interval={null}>
+          {chunkedProjectDetails.map((chunk, index) => (
+            <Carousel.Item key={index}>
+              <Row>
+                {chunk.map((project, idx) => (
+                  <Col key={idx} md={4}>
+                    <CardContainer>
+                      <StyledCard>
+                        <Card.Img variant="top" src={project.imageSrc} alt={project.title} />
+                        <Card.Body>
+                          <Card.Title>{project.title}</Card.Title>
+                          <Card.Text>{project.description}</Card.Text>
+                          <CardButtons>
+                            <DemoButton>
+                              {project.demoLink && (
+                                <Button
+                                  variant="primary"
+                                  href={project.demoLink}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  Demo
+                                </Button>
+                              )}
+                            </DemoButton>
+                            <SourceCodeButton>
+                              {project.sourceCodeLink && (
+                                <Button
+                                  variant="secondary"
+                                  href={project.sourceCodeLink}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  Source Code
+                                </Button>
+                              )}
+                            </SourceCodeButton>
+                          </CardButtons>
+                        </Card.Body>
+                      </StyledCard>
+                    </CardContainer>
+                  </Col>
+                ))}
+              </Row>
+            </Carousel.Item>
+          ))}
+        </StyledCarousel>
+      </StyledCarouselContainer>
+    )}
+    {!displayCarousel && (
+      <Cards>
+      <Row xs={1} md={2} lg={3} className="gy-5 gx-4">
+        {projectDetails.map((project, index) => (
+          <Col key={index}>
+            <CardContainer>
+              <StyledCard>
+                <Card.Img variant="top" src={project.imageSrc} alt={project.title} />
+                <Card.Body>
+                  <Card.Title>{project.title}</Card.Title>
+                  <Card.Text>{project.description}</Card.Text>
+                  <CardButtons>
+                    <DemoButton>
+                      {project.demoLink && (
+                        <Button
+                          variant="primary"
+                          href={project.demoLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Demo
+                        </Button>
+                      )}
+                    </DemoButton>
+                    <SourceCodeButton>
+                      {project.sourceCodeLink && (
+                        <Button
+                          variant="secondary"
+                          href={project.sourceCodeLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Source Code
+                        </Button>
+                      )}
+                    </SourceCodeButton>
+                  </CardButtons>
+                </Card.Body>
+              </StyledCard>
+            </CardContainer>
+          </Col>
+        ))}
+      </Row>
+      </Cards>
+    )}
+  </CenteredContent>
+</Content>
+
+      </SampleWorkContent>
+    </SampleWorkPage>
+  );
 };
 
 export default SampleWork;
 
-const SampleWorkPage = styled.div`
-    height: 100vh;
+const StyledCarouselContainer = styled.div`
+  width: 80%;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 10%; 
+    height: 8%; 
+    background-color: transparent;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    align-self: center;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .carousel-control-prev {
+    left: -14%;
+  }
+
+  .carousel-control-next {
+    right: -14%;
+  }
+
+  @media (max-width: 767px) {
     width: 100%;
-    color: ${TextColor.secondaryWhite};
+
+    .carousel-control-prev {
+      left: 2%;
+    }
+
+    .carousel-control-next {
+      right: 2%;
+    }
+  }
 `;
 
-const SampleWorkContent = styled(SampleWorkPage)`
-    background-color: ${BackgroundColor.sampleWorkBg};
-    display: flex;
-    flex-direction: column;
+const SampleWorkPage = styled.div`
+  height: 100vh;
+  width: 100%;
+  background-color: ${BackgroundColor.sampleWorkBg};
+`;
+
+const SampleWorkContent = styled.div`
+  color: ${TextColor.secondaryWhite};
+  padding-top: 3%;
 `;
 
 const Title = styled.div`
-    font-family: "Fira Sans", sans-serif;
-    font-size: 350%;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 4%;
+  font-family: "Fira Sans", sans-serif;
+  font-size: 350%;
+  font-weight: bold;
+  text-align: center;
 `;
 
 const Content = styled.div`
-    margin-top: 5%;
-    gap: 4%;
-    justify-content: center;
+  font-family: "Fira Sans", sans-serif;
+  margin-top: 4%;
+  justify-content: center;
+`;
+
+const CenteredContent = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const CardContainer = styled.div``;
+
+const StyledCard = styled(Card)`
+  width: 100%;
+`;
+
+const CardButtons = styled.div`
+  display: flex;
+`;
+
+const DemoButton = styled.div`
+  margin-left: 18%;
+`;
+
+const SourceCodeButton = styled.div`
+  margin-left: 8%;
+`;
+
+const StyledCarousel = styled(Carousel)`
+  width: 90%;
+  margin-left: 4%;
+`;
+
+const Cards = styled.div`
+  width: 85%;
 `;
