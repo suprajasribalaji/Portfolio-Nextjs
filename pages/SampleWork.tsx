@@ -9,12 +9,14 @@ import Carousel from 'react-bootstrap/Carousel';
 const taskNoteImageSrc = "/images/expedu-bg-img.jpeg";
 const taskNoteDemoLink = "https://task-note-ab071.web.app/";
 const taskNoteSourceCodeLink = "https://github.com/suprajasribalaji/task_note";
+
 const dnsManagerImageSrc = "/images/dns-manager.jpg";
 const dnsManagerDemoLink = "https://dns-manager-8da5e.web.app/";
 const dnsManagerSourceCodeLink = "https://github.com/suprajasribalaji/DNSManager";
+
 const portfolioImageSrc = "/images/portfolio.jpeg";
 const portfolioDemoLink = "https://supraja-sri.web.app/";
-const portfolioSourceCodeLink = "https://github.com/suprajasribalaji/portfolio";
+const portfolioSourceCodeLink = "https://github.com/suprajasribalaji/Portfolio-Nextjs";
 
 const projectDetails = [
   {
@@ -227,7 +229,7 @@ const Title = styled.div`
 
 const Content = styled.div`
   font-family: "Fira Sans", sans-serif;
-  margin-top: 4%;
+  margin-top: 5%;
   justify-content: center;
 `;
 
@@ -261,5 +263,5 @@ const StyledCarousel = styled(Carousel)`
 `;
 
 const Cards = styled.div`
-  width: 85%;
+  width: 83%;
 `;

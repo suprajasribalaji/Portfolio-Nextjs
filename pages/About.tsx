@@ -4,8 +4,25 @@ import { BackgroundColor, ButtonColor, TextColor } from "../styles/theme";
 import ProfilePicture from "../public/images/myImage.jpg";
 import { useState } from "react";
 
-const About: NextPage = () => {
+type Props = {
+    handleResumeClick: () => void;
+    handleProjectClick: () => void;
+    resumeURL: string;
+}
+
+const About: NextPage<Props> = ({handleResumeClick, handleProjectClick, resumeURL}) => {
     const [isResumeClicked, setIsResumeClicked] = useState<boolean>(false);
+    
+    const handleDownloadButton = () => {
+        console.log(resumeURL, ' ------------');
+        const link = document.createElement('a');
+        link.href = resumeURL;
+        link.target = '_blank';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        setIsResumeClicked(false);
+    };
     
     return (
         <AboutPage>
@@ -26,10 +43,24 @@ const About: NextPage = () => {
                             <PopupDescription>Do you want to download or view the resume?</PopupDescription>
                             <PopupButtons className="d-flex justify-content-between">
                                 <DownloadButton>
-                                    <StyledPopUpButton type="button" className="btn" onClick={() => setIsResumeClicked(false)}>Download</StyledPopUpButton>
+                                    <StyledPopUpButton type="button" className="btn" 
+                                        onClick={() => {
+                                            setIsResumeClicked(false);
+                                            handleDownloadButton();
+                                        }}
+                                    >
+                                        Download
+                                    </StyledPopUpButton>
                                 </DownloadButton>
                                 <ViewButton>
-                                    <StyledPopUpButton type="button" className="btn" onClick={() => setIsResumeClicked(false)}>View</StyledPopUpButton>
+                                    <StyledPopUpButton type="button" className="btn" 
+                                        onClick={() => {
+                                            handleResumeClick();
+                                            setIsResumeClicked(false); 
+                                        }}
+                                    >
+                                        View
+                                    </StyledPopUpButton>
                                 </ViewButton>
                             </PopupButtons>
                         </AlertPopup>
@@ -40,7 +71,7 @@ const About: NextPage = () => {
                         <StyledButton type="button"  className="btn btn-outline-primary btn-lg " onClick={() => setIsResumeClicked(true)}>Resume</StyledButton>
                     </ResumeButton>
                     <ProjectButton>
-                        <StyledButton type="button"  className="btn btn-outline-primary btn-lg" >Project</StyledButton>
+                        <StyledButton type="button"  className="btn btn-outline-primary btn-lg" onClick={handleProjectClick}>Project</StyledButton>
                     </ProjectButton>                    
                 </Buttons>
             </AboutContent>
