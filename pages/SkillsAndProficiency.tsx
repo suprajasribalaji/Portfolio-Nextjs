@@ -3,69 +3,87 @@ import styled from "styled-components";
 import { BackgroundColor, ButtonColor, LinearGradientColor, TextColor } from "../styles/theme";
 import BackgroundImage from "../public/images/skillprof-bg-img.jpeg";
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import { useState } from "react";
 
-const SkillsAndProficiency : NextPage = () => {
+const SkillSetData = [
+    {
+        category: 'Programming Languages',
+        skills: ['TypeScript', 'JavaScript', 'Python', 'Java']
+    },
+    {
+        category: 'Framework and Libraries',
+        skills: ['ReactJS', 'Redux Tool Kit (RTK)', 'NextJS', 'ExpressJS (REST API)', 'NestJS', 'Django']
+    },
+    {
+        category: 'Cloud Services',
+        skills: ['Amazon Web Service (AWS)', 'Firebase']
+    },
+    {
+        category: 'Database Systems',
+        skills: ['MySQL', 'MongoDB']
+    },
+    {
+        category: 'Version Control System',
+        skills: ['GIT']
+    },
+    {
+        category: 'Other Tools',
+        skills: ['Visual Studio Code IDE', 'Canva Design', 'Eclipse']
+    }
+];
+
+const SkillsAndProficiency: NextPage = () => {
+    const [selectedSkillSet, setSelectedSkillSet] = useState<string>('');
+
+    const handleCategoryClick = (category: string) => {
+        setSelectedSkillSet(prev => prev === category ? '' : category);
+    };
+
     return (
         <SkillsAndProficiencyPage>
-        <SkillsAndProficiencyContent>
-                    <Title>
-                        Skills & Proficiencies
-                    </Title>
-                    <AboutSkillsAndProficiency>
-                        <TechnicalSkillsAndProficiency>
-                            <TechnicakSkillsTitle>
-                                PROGRAMMING LANGUAGES
-                                <StyledIconButton type="button"  className="btn btn-outline-primary btn-lg ">
-                                    <i className="bi bi-arrow-right-short"></i>
-                                </StyledIconButton>
-                            </TechnicakSkillsTitle>
-                            <TechnicakSkillsTitle>
-                                FRAMEWORK AND LIBRARIES
-                                <StyledIconButton type="button"  className="btn btn-outline-primary btn-lg ">
-                                    <i className="bi bi-arrow-right-short"></i>
-                                </StyledIconButton>
-                            </TechnicakSkillsTitle>
-                            <TechnicakSkillsTitle>
-                                CLOUD SERVICES
-                                <StyledIconButton type="button"  className="btn btn-outline-primary btn-lg ">
-                                    <i className="bi bi-arrow-right-short"></i>
-                                </StyledIconButton>
-                            </TechnicakSkillsTitle>
-                            <TechnicakSkillsTitle>
-                                DATABASE SYSTEMS
-                                <StyledIconButton type="button"  className="btn btn-outline-primary btn-lg ">
-                                    <i className="bi bi-arrow-right-short"></i>
-                                </StyledIconButton>
-                            </TechnicakSkillsTitle>
-                            <TechnicakSkillsTitle>
-                                OTHER TOOLS
-                                <StyledIconButton type="button"  className="btn btn-outline-primary btn-lg ">
-                                    <i className="bi bi-arrow-right-short"></i>
-                                </StyledIconButton>
-                            </TechnicakSkillsTitle>
-                            <TechnicalSkills>
-                                <Skills>
-                                    
-                                </Skills>
-                            </TechnicalSkills>
-                        </TechnicalSkillsAndProficiency>
-                    </AboutSkillsAndProficiency>
-                    <ActionButton>
-                        <DownloadResumeButton>
-                            <StyledButton type="button" className="btn btn-outline-primary">Download</StyledButton>
-                        </DownloadResumeButton>
-                        <SampleWorkButton>
-                            <StyledButton type="button" className="btn btn-outline-primary">Sample Work</StyledButton>
-                        </SampleWorkButton>
-                    </ActionButton>
-                </SkillsAndProficiencyContent>
+            <SkillsAndProficiencyContent>
+                <Title>Skills & Proficiencies</Title>
+                <AboutSkillsAndProficiency>
+                    <TechnicalSkillsAndProficiency>
+                        {SkillSetData.map((category, index) => (
+                            <SkillSetContainer key={index}>
+                                <TechnicakSkillsTitle>
+                                    {category.category}
+                                    <StyledIconButton type="button" className="btn btn-outline-primary btn-lg" onClick={() => handleCategoryClick(category.category)}>
+                                        <i className="bi bi-arrow-right-short"></i>
+                                    </StyledIconButton>
+                                </TechnicakSkillsTitle>
+                                {selectedSkillSet === category.category && (
+                                    <TechnicalSkills>
+                                        <Skills>
+                                            {category.skills.map((skill, index) => (
+                                                <Skills key={index}>{skill}</Skills>
+                                            ))}
+                                        </Skills>
+                                    </TechnicalSkills>
+                                )}
+                            </SkillSetContainer>
+                        ))}
+                    </TechnicalSkillsAndProficiency>
+                </AboutSkillsAndProficiency>
+                <ActionButton>
+                    <DownloadResumeButton>
+                        <StyledButton type="button" className="btn btn-outline-primary">Download</StyledButton>
+                    </DownloadResumeButton>
+                    <SampleWorkButton>
+                        <StyledButton type="button" className="btn btn-outline-primary">Sample Work</StyledButton>
+                    </SampleWorkButton>
+                </ActionButton>
+            </SkillsAndProficiencyContent>
         </SkillsAndProficiencyPage>
     )
 };
 
 export default SkillsAndProficiency;
 
-const ProgrammingLanguages = styled.div``;
+const SkillSetContainer = styled.div`
+    display: flex;
+`;
 
 const StyledIconButton = styled.button`
   font-weight: bold;
@@ -92,7 +110,7 @@ const StyledButton = styled.button`
 
 const SkillsAndProficiencyPage = styled.div`
     width: 100%;
-    height: 100vh;
+    height: 110vh;
     color: ${TextColor.primaryWhite};
     background: linear-gradient(0deg, ${LinearGradientColor.expeduLG}, ${LinearGradientColor.expeduLG}),
     url(${BackgroundImage.src});
@@ -113,7 +131,6 @@ const Title = styled.div`
 `;
 
 const AboutSkillsAndProficiency = styled.div`
-    display: flex;
     margin-left: 9.5%;
     margin-top: 5.5%;
 `;
@@ -125,48 +142,24 @@ const TechnicakSkillsTitle = styled.div`
     font-weight: bold;
     font-style: normal;
     font-size: 115%;
+    width: 26%;
 `;
 
 const TechnicalSkills = styled.div`
     font-family: "DM Sans", sans-serif;
-    margin-top: 9%;
     font-size: 110%;
     color: ${TextColor.SemiLightWhite};
     padding-right: 48%;
+    margin-top: 2%;
 `;
 
 const Skills = styled.div`
-    margin-top: 8%;
-    font-size: 88%;
-`;
-
-const ToolsAndProficiency = styled.div`
-    margin-left: 6%;
-    margin-right: 6%;
-`;
-
-const ToolsTitle = styled(TechnicakSkillsTitle)``;
-
-const Tools = styled.div`
-    margin-top: 28%;
-    font-size: 88%;
-`;
-
-const Tool = styled.div`
-    margin-bottom: 20%;
-    color: ${TextColor.SemiLightWhite};
-`;
-
-const TechnicalSkillsProgressBar = styled.div`
-    height: 20px; 
-    background-color: ${BackgroundColor.strokeColor};
-`;
-
-const ToolsProgressBar = styled(TechnicalSkillsProgressBar)``;
-
-const ProgressBar = styled.div`
-    width: 30%;
-    background-color: ${BackgroundColor.trailColor};
+    font-size: 95%;
+    display: inline;
+    &:not(:last-child)::after {
+        content: "\\A"; // No space before the line break character
+        white-space: pre;
+    }
 `;
 
 const ActionButton = styled.div`
