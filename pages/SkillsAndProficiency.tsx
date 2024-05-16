@@ -2,93 +2,53 @@ import { NextPage } from "next";
 import styled from "styled-components";
 import { BackgroundColor, ButtonColor, LinearGradientColor, TextColor } from "../styles/theme";
 import BackgroundImage from "../public/images/skillprof-bg-img.jpeg";
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 const SkillsAndProficiency : NextPage = () => {
     return (
         <SkillsAndProficiencyPage>
         <SkillsAndProficiencyContent>
                     <Title>
-                        Skills &<br/>Proficiencies
+                        Skills & Proficiencies
                     </Title>
                     <AboutSkillsAndProficiency>
                         <TechnicalSkillsAndProficiency>
                             <TechnicakSkillsTitle>
-                                TECHNICAL SKILLS
+                                PROGRAMMING LANGUAGES
+                                <StyledIconButton type="button"  className="btn btn-outline-primary btn-lg ">
+                                    <i className="bi bi-arrow-right-short"></i>
+                                </StyledIconButton>
+                            </TechnicakSkillsTitle>
+                            <TechnicakSkillsTitle>
+                                FRAMEWORK AND LIBRARIES
+                                <StyledIconButton type="button"  className="btn btn-outline-primary btn-lg ">
+                                    <i className="bi bi-arrow-right-short"></i>
+                                </StyledIconButton>
+                            </TechnicakSkillsTitle>
+                            <TechnicakSkillsTitle>
+                                CLOUD SERVICES
+                                <StyledIconButton type="button"  className="btn btn-outline-primary btn-lg ">
+                                    <i className="bi bi-arrow-right-short"></i>
+                                </StyledIconButton>
+                            </TechnicakSkillsTitle>
+                            <TechnicakSkillsTitle>
+                                DATABASE SYSTEMS
+                                <StyledIconButton type="button"  className="btn btn-outline-primary btn-lg ">
+                                    <i className="bi bi-arrow-right-short"></i>
+                                </StyledIconButton>
+                            </TechnicakSkillsTitle>
+                            <TechnicakSkillsTitle>
+                                OTHER TOOLS
+                                <StyledIconButton type="button"  className="btn btn-outline-primary btn-lg ">
+                                    <i className="bi bi-arrow-right-short"></i>
+                                </StyledIconButton>
                             </TechnicakSkillsTitle>
                             <TechnicalSkills>
                                 <Skills>
-                                    Python, JavaScript, TypeScript
-                                    <TechnicalSkillsProgressBar className="progress" >
-                                        <ProgressBar
-                                            className="progress-bar bg-custom"
-                                            role="progressbar"
-                                            style={{ width: '70%', backgroundColor: 'white' }}
-                                            aria-valuenow={70} // Convert the value to a number
-                                            aria-valuemin={0} // Convert the value to a number
-                                            aria-valuemax={100} // Convert the value to a number
-                                        ></ProgressBar>
-                                    </TechnicalSkillsProgressBar>
-                                </Skills>
-                                <Skills>
-                                    ReactJS, Redux, NextJS, ExpressJS, CSS (Bootstrap, Ant Design), REST API
-                                    <TechnicalSkillsProgressBar className="progress" >
-                                        <ProgressBar
-                                            className="progress-bar bg-custom"
-                                            role="progressbar"
-                                            aria-valuenow={50} // Convert the value to a number
-                                            aria-valuemin={0} // Convert the value to a number
-                                            aria-valuemax={100} // Convert the value to a number
-                                        ></ProgressBar>
-                                    </TechnicalSkillsProgressBar>
-                                </Skills>
-                                <Skills>
-                                    Django, AWS, MongoDB, GIT, ORM 
-                                    <TechnicalSkillsProgressBar className="progress" >
-                                        <ProgressBar
-                                            className="progress-bar bg-custom"
-                                            role="progressbar"
-                                            style={{ width: '30%', backgroundColor: '#FFFFFF' }}
-                                            aria-valuenow={30} // Convert the value to a number
-                                            aria-valuemin={0} // Convert the value to a number
-                                            aria-valuemax={100} // Convert the value to a number
-                                        ></ProgressBar>
-                                    </TechnicalSkillsProgressBar>
+                                    
                                 </Skills>
                             </TechnicalSkills>
                         </TechnicalSkillsAndProficiency>
-                        <ToolsAndProficiency>
-                            <ToolsTitle>
-                                TOOLS
-                            </ToolsTitle>
-                            <Tools>
-                                <Tool>
-                                    IDE - Visual Studio Code
-                                    <ToolsProgressBar className="progress" >
-                                        <ProgressBar
-                                            className="progress-bar bg-custom"
-                                            role="progressbar"
-                                            style={{ width: '85%', backgroundColor: '#FFFFFF' }}
-                                            aria-valuenow={85} // Convert the value to a number
-                                            aria-valuemin={0} // Convert the value to a number
-                                            aria-valuemax={100} // Convert the value to a number
-                                        ></ProgressBar>
-                                    </ToolsProgressBar>
-                               </Tool>
-                                <Tool>
-                                    DESIGN TOOL - CANVA
-                                    <ToolsProgressBar className="progress" >
-                                        <ProgressBar
-                                            className="progress-bar bg-custom"
-                                            role="progressbar"
-                                            style={{ width: '30%', backgroundColor: '#FFFFFF' }}
-                                            aria-valuenow={30} // Convert the value to a number
-                                            aria-valuemin={0} // Convert the value to a number
-                                            aria-valuemax={100} // Convert the value to a number
-                                        ></ProgressBar>
-                                    </ToolsProgressBar>
-                                </Tool>
-                            </Tools>
-                        </ToolsAndProficiency>
                     </AboutSkillsAndProficiency>
                     <ActionButton>
                         <DownloadResumeButton>
@@ -104,6 +64,18 @@ const SkillsAndProficiency : NextPage = () => {
 };
 
 export default SkillsAndProficiency;
+
+const ProgrammingLanguages = styled.div``;
+
+const StyledIconButton = styled.button`
+  font-weight: bold;
+  border: none;
+  color: ${TextColor.primaryWhite};
+  &&&:hover {
+    background-color: transparent; 
+    color: ${TextColor.lightWhite};
+  }
+`;
 
 const StyledButton = styled.button`
   background-color: ${ButtonColor.backgroundColor};
