@@ -114,7 +114,7 @@ const Title = styled.div`
 
 const AboutSkillsAndProficiency = styled.div`
     display: flex;
-    margin-left: 9%;
+    margin-left: 9.5%;
     margin-top: 5.5%;
 `;
 
