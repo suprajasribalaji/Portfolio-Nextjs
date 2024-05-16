@@ -9,12 +9,14 @@ import Carousel from 'react-bootstrap/Carousel';
 const taskNoteImageSrc = "/images/expedu-bg-img.jpeg";
 const taskNoteDemoLink = "https://task-note-ab071.web.app/";
 const taskNoteSourceCodeLink = "https://github.com/suprajasribalaji/task_note";
+
 const dnsManagerImageSrc = "/images/dns-manager.jpg";
 const dnsManagerDemoLink = "https://dns-manager-8da5e.web.app/";
 const dnsManagerSourceCodeLink = "https://github.com/suprajasribalaji/DNSManager";
+
 const portfolioImageSrc = "/images/portfolio.jpeg";
-const portfolioDemoLink = "https://supraja-sri.web.app/";
-const portfolioSourceCodeLink = "https://github.com/suprajasribalaji/portfolio";
+const portfolioDemoLink = "https://suprajasri-portfolio.netlify.app/";
+const portfolioSourceCodeLink = "https://github.com/suprajasribalaji/Portfolio-Nextjs";
 
 const projectDetails = [
   {
@@ -59,106 +61,105 @@ const SampleWork: NextPage = () => {
       <SampleWorkContent>
         <Title>Sample Work</Title>
         <Content>
-  <CenteredContent>
-    {displayCarousel && (
-      <StyledCarouselContainer>
-        <StyledCarousel indicators={false} controls={true} interval={null}>
-          {chunkedProjectDetails.map((chunk, index) => (
-            <Carousel.Item key={index}>
-              <Row>
-                {chunk.map((project, idx) => (
-                  <Col key={idx} md={4}>
-                    <CardContainer>
-                      <StyledCard>
-                        <Card.Img variant="top" src={project.imageSrc} alt={project.title} />
-                        <Card.Body>
-                          <Card.Title>{project.title}</Card.Title>
-                          <Card.Text>{project.description}</Card.Text>
-                          <CardButtons>
-                            <DemoButton>
-                              {project.demoLink && (
-                                <Button
-                                  variant="primary"
-                                  href={project.demoLink}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                >
-                                  Demo
-                                </Button>
-                              )}
-                            </DemoButton>
-                            <SourceCodeButton>
-                              {project.sourceCodeLink && (
-                                <Button
-                                  variant="secondary"
-                                  href={project.sourceCodeLink}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                >
-                                  Source Code
-                                </Button>
-                              )}
-                            </SourceCodeButton>
-                          </CardButtons>
-                        </Card.Body>
-                      </StyledCard>
-                    </CardContainer>
-                  </Col>
-                ))}
-              </Row>
-            </Carousel.Item>
-          ))}
-        </StyledCarousel>
-      </StyledCarouselContainer>
-    )}
-    {!displayCarousel && (
-      <Cards>
-      <Row xs={1} md={2} lg={3} className="gy-5 gx-4">
-        {projectDetails.map((project, index) => (
-          <Col key={index}>
-            <CardContainer>
-              <StyledCard>
-                <Card.Img variant="top" src={project.imageSrc} alt={project.title} />
-                <Card.Body>
-                  <Card.Title>{project.title}</Card.Title>
-                  <Card.Text>{project.description}</Card.Text>
-                  <CardButtons>
-                    <DemoButton>
-                      {project.demoLink && (
-                        <Button
-                          variant="primary"
-                          href={project.demoLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Demo
-                        </Button>
-                      )}
-                    </DemoButton>
-                    <SourceCodeButton>
-                      {project.sourceCodeLink && (
-                        <Button
-                          variant="secondary"
-                          href={project.sourceCodeLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Source Code
-                        </Button>
-                      )}
-                    </SourceCodeButton>
-                  </CardButtons>
-                </Card.Body>
-              </StyledCard>
-            </CardContainer>
-          </Col>
-        ))}
-      </Row>
-      </Cards>
-    )}
-  </CenteredContent>
-</Content>
-
+          <CenteredContent>
+            {displayCarousel && (
+              <StyledCarouselContainer>
+                <StyledCarousel indicators={false} controls={true} interval={null}>
+                  {chunkedProjectDetails.map((chunk, index) => (
+                    <Carousel.Item key={index}>
+                      <Row>
+                        {chunk.map((project, idx) => (
+                          <Col key={idx} md={4}>
+                            <CardContainer>
+                              <StyledCard>
+                                <StyledImg src={project.imageSrc} alt={project.title} style={{ width: '60%' }}/>
+                                <Card.Body>
+                                  <Card.Title className="text-center" style={{ marginTop: '5%'}}>{project.title}</Card.Title> 
+                                  <Card.Text>{project.description}</Card.Text>
+                                  <CardButtons>
+                                    <DemoButton>
+                                      {project.demoLink && (
+                                        <Button
+                                          variant="primary"
+                                          href={project.demoLink}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                        >
+                                          Demo
+                                        </Button>
+                                      )}
+                                    </DemoButton>
+                                    <SourceCodeButton>
+                                      {project.sourceCodeLink && (
+                                        <Button
+                                          variant="secondary"
+                                          href={project.sourceCodeLink}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                        >
+                                          Source Code
+                                        </Button>
+                                      )}
+                                    </SourceCodeButton>
+                                  </CardButtons>
+                                </Card.Body>
+                              </StyledCard>
+                            </CardContainer>
+                          </Col>
+                        ))}
+                      </Row>
+                    </Carousel.Item>
+                  ))}
+                </StyledCarousel>
+              </StyledCarouselContainer>
+            )}
+            {!displayCarousel && (
+              <Cards>
+                <Row xs={1} md={2} lg={3} className="gy-5 gx-4">
+                  {projectDetails.map((project, index) => (
+                    <Col key={index}>
+                      <CardContainer>
+                        <StyledCard>
+                          <StyledImg src={project.imageSrc} alt={project.title} style={{ width: '60%' }}/>
+                          <Card.Body>
+                            <Card.Title className="text-center" style={{ marginTop: '5%'}}>{project.title}</Card.Title> 
+                            <Card.Text>{project.description}</Card.Text>
+                            <CardButtons>
+                              <DemoButton>
+                                {project.demoLink && (
+                                  <Button
+                                    variant="primary"
+                                    href={project.demoLink}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  >
+                                    Demo
+                                  </Button>
+                                )}
+                              </DemoButton>
+                              <SourceCodeButton>
+                                {project.sourceCodeLink && (
+                                  <Button
+                                    variant="secondary"
+                                    href={project.sourceCodeLink}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  >
+                                    Source Code
+                                  </Button>
+                                )}
+                              </SourceCodeButton>
+                            </CardButtons>
+                          </Card.Body>
+                        </StyledCard>
+                      </CardContainer>
+                    </Col>
+                  ))}
+                </Row>
+              </Cards>
+            )}
+          </CenteredContent>
+        </Content>
       </SampleWorkContent>
     </SampleWorkPage>
   );
@@ -227,7 +228,7 @@ const Title = styled.div`
 
 const Content = styled.div`
   font-family: "Fira Sans", sans-serif;
-  margin-top: 4%;
+  margin-top: 8%;
   justify-content: center;
 `;
 
@@ -236,11 +237,22 @@ const CenteredContent = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
-const CardContainer = styled.div``;
+const CardContainer = styled.div`
+  background-color: transparent; /* Remove white background */
+  text-align: center; /* Center the content */
+`;
 
 const StyledCard = styled(Card)`
+  background-color: ${BackgroundColor.sampleWorkBg};
+  color: ${TextColor.primaryWhite};
+  border: none;
+`;
+
+const StyledImg = styled(Card.Img)`
   width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto; /* Center the image horizontally */
 `;
 
 const CardButtons = styled.div`
@@ -261,5 +273,5 @@ const StyledCarousel = styled(Carousel)`
 `;
 
 const Cards = styled.div`
-  width: 85%;
+  width: 83%;
 `;

@@ -3,7 +3,23 @@ import styled from "styled-components";
 import { ButtonColor, LinearGradientColor, TextColor } from "../styles/theme";
 import BackgroundImage from "../public/images/expedu-bg-img.jpeg";
 
-const ExperienceAndEducation: NextPage = () => {
+type Props = {
+    handleResumeContinuationClick: () => void;
+    resumeURL: string;
+}
+
+const ExperienceAndEducation: NextPage<Props> = ({ handleResumeContinuationClick, resumeURL }) => {
+    
+    const handleDownloadButton = () => {
+        console.log(resumeURL, ' ------------');
+        const link = document.createElement('a');
+        link.href = resumeURL;
+        link.target = '_blank';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     return (
         <ExperienceAndEducationPage>
             <ExperienceAndEducationContent>
@@ -67,10 +83,10 @@ const ExperienceAndEducation: NextPage = () => {
                 <ActionButton>
                     <NextPageButton>
                         <DownloadButton>
-                            <StyledButton type="button" className="btn btn-outline-primary">Download</StyledButton>
+                            <StyledButton type="button" className="btn btn-outline-primary" onClick={handleDownloadButton}>Download</StyledButton>
                         </DownloadButton>
                         <SkillsAndProficiencyButton>
-                            <StyledButton type="button" className="btn btn-outline-primary">Skills & Proficiency</StyledButton>
+                            <StyledButton type="button" className="btn btn-outline-primary" onClick={handleResumeContinuationClick}>Skills & Proficiency</StyledButton>
                         </SkillsAndProficiencyButton>
                     </NextPageButton>
                 </ActionButton>
