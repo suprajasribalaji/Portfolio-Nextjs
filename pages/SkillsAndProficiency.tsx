@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import styled from "styled-components";
-import { BackgroundColor, ButtonColor, LinearGradientColor, TextColor } from "../styles/theme";
+import { ButtonColor, LinearGradientColor, TextColor } from "../styles/theme";
 import BackgroundImage from "../public/images/skillprof-bg-img.jpeg";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { useState } from "react";
@@ -32,11 +32,26 @@ const SkillSetData = [
     }
 ];
 
-const SkillsAndProficiency: NextPage = () => {
+type Props = {
+    handleProjectClick: () => void;
+    resumeURL: string;
+};
+
+const SkillsAndProficiency: NextPage<Props> = ({ handleProjectClick, resumeURL }) => {
     const [selectedSkillSet, setSelectedSkillSet] = useState<string>('');
 
     const handleCategoryClick = (category: string) => {
         setSelectedSkillSet(prev => prev === category ? '' : category);
+    };
+
+    const handleDownloadButton = () => {
+        const link = document.createElement('a');
+        link.href = resumeURL;
+        link.target = '_blank';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        console.log('Success : handleDownloadButton');
     };
 
     return (
@@ -68,10 +83,10 @@ const SkillsAndProficiency: NextPage = () => {
                 </AboutSkillsAndProficiency>
                 <ActionButton>
                     <DownloadResumeButton>
-                        <StyledButton type="button" className="btn btn-outline-primary">Download</StyledButton>
+                        <StyledButton type="button" className="btn btn-outline-primary" onClick={handleDownloadButton}>Download</StyledButton>
                     </DownloadResumeButton>
                     <SampleWorkButton>
-                        <StyledButton type="button" className="btn btn-outline-primary">Sample Work</StyledButton>
+                        <StyledButton type="button" className="btn btn-outline-primary" onClick={handleProjectClick}>Sample Work</StyledButton>
                     </SampleWorkButton>
                 </ActionButton>
             </SkillsAndProficiencyContent>
